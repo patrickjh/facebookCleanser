@@ -5,9 +5,9 @@ import java.io.File;
 public class main {
 
     public static void main(String[] args) {
-        //FacebookCleanser facebookCleanser = new FacebookCleanser();
         WebDriver driver = setUpDriver();
-        driver.get("http://www.facebook.com");
+        FacebookProxy facebook = new FacebookProxy(driver);
+        facebook.home();
     }
 
     private static WebDriver setUpDriver() {
@@ -15,7 +15,6 @@ public class main {
                 "C:"+ File.separator + "Users" + File.separator +"patrick"
                         + File.separator + "Desktop" + File.separator + "geckodriver.exe" );
 
-        WebDriver driver = new FirefoxDriver();
-        return driver;
+        return new FirefoxDriver();
     }
 }
