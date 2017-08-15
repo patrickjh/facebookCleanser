@@ -25,5 +25,9 @@ class FacebookLocations {
         static final String ALL_ACTIVITY_PAGE_BUTTON_XPATH = "//a[@data-testid='view_activity_cover_button']";
     }
 
+    static class AllActivityPage {
+        static final String FIRST_POST_EDIT_BUTTON_XPATH ="//a[1 and @data-testid='pencil_icon_link']";
+    }
+
 
 }
