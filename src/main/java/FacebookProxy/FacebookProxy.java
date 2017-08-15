@@ -1,3 +1,5 @@
+package FacebookProxy;
+
 import org.openqa.selenium.*;
 
 import java.util.concurrent.TimeUnit;
