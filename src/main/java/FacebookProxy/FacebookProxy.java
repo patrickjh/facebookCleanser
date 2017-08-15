@@ -1,11 +1,14 @@
+package FacebookProxy;
+
 import org.openqa.selenium.*;
 
 import java.util.concurrent.TimeUnit;
 
+import static FacebookProxy.FacebookLocations.*;
+
 public class FacebookProxy {
 
     private WebDriver driver;
-    private WebElement currentElement;
 
     public FacebookProxy(WebDriver driver) {
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
@@ -13,13 +16,17 @@ public class FacebookProxy {
     }
 
     public FacebookProxy home() {
-        driver.get("http://www.facebook.com");
+        driver.get(HomePage.URL);
         return this;
     }
 
     public FacebookProxy login(String email, String password) {
-        WebElement login = driver.findElement(By.xpath("//input[@data-testid='royal_email']"));
-        login.sendKeys(email);
+        driver.get(LoginPage.URL);
+
+        driver.findElement(By.xpath(LoginPage.EMAIL_ADDRESS_FIELD_XPATH)).sendKeys(email);
+        driver.findElement(By.xpath(LoginPage.PASSWORD_FIELD_XPATH)).sendKeys(password);
+        driver.findElement(By.xpath(LoginPage.LOGIN_BUTTON_XPATH)).submit();
+
         return this;
     }
 }
