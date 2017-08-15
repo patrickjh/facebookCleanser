@@ -1,5 +1,6 @@
 package FacebookProxy;
 
+import com.gargoylesoftware.htmlunit.ElementNotFoundException;
 import org.openqa.selenium.*;
 
 import java.util.concurrent.TimeUnit;
@@ -8,7 +9,7 @@ import static FacebookProxy.FacebookLocations.*;
 
 public class FacebookProxy {
 
-    private WebDriver driver;
+    private final WebDriver driver;
 
     public FacebookProxy(WebDriver driver) {
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
@@ -26,6 +27,19 @@ public class FacebookProxy {
         driver.findElement(By.xpath(LoginPage.EMAIL_ADDRESS_FIELD_XPATH)).sendKeys(email);
         driver.findElement(By.xpath(LoginPage.PASSWORD_FIELD_XPATH)).sendKeys(password);
         driver.findElement(By.xpath(LoginPage.LOGIN_BUTTON_XPATH)).submit();
+
+        return this;
+    }
+
+    public FacebookProxy allActivityPage() {
+
+        try {
+            driver.findElement(By.xpath(HomePage.PROFILE_PAGE_BUTTON_XPATH)).click();
+        } catch (ElementNotFoundException e) {
+            driver.get(HomePage.URL);
+            driver.findElement(By.xpath(HomePage.PROFILE_PAGE_BUTTON_XPATH)).click();
+        }
+        driver.findElement(By.xpath(ProfilePage.ALL_ACTIVITY_PAGE_BUTTON_XPATH)).click();
 
         return this;
     }

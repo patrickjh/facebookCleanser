@@ -17,6 +17,12 @@ class FacebookLocations {
     static class HomePage {
 
         static final String URL = "http://www.facebook.com";
+
+        static final String PROFILE_PAGE_BUTTON_XPATH = "//a[@data-testid='blue_bar_profile_link']";
+    }
+
+    static class ProfilePage {
+        static final String ALL_ACTIVITY_PAGE_BUTTON_XPATH = "//a[@data-testid='view_activity_cover_button']";
     }
 
 

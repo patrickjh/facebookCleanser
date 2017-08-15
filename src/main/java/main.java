@@ -8,7 +8,7 @@ public class main {
     public static void main(String[] args) {
         WebDriver driver = setUpDriver();
         FacebookProxy facebook = new FacebookProxy(driver);
-        facebook.login("a", "b");
+        facebook.login().allActivityPage();
     }
 
     private static WebDriver setUpDriver() {
