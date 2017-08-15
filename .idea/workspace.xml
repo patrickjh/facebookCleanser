@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="01a3eaa0-4dc8-4fb4-a69c-656d96d72e01" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/FacebookProxy.java" afterPath="$PROJECT_DIR$/src/main/java/FacebookProxy.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/main.java" afterPath="$PROJECT_DIR$/src/main/java/main.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -288,12 +286,12 @@
       <workItem from="1502510276193" duration="145000" />
       <workItem from="1502576688454" duration="3945000" />
       <workItem from="1502683814508" duration="587000" />
-      <workItem from="1502738482175" duration="2428000" />
+      <workItem from="1502738482175" duration="3135000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10936000" />
+    <option name="totallyTimeSpent" value="11643000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="21" y="26" width="948" height="1000" extended-state="0" />
