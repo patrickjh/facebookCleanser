@@ -27,6 +27,12 @@ class FacebookLocations {
 
     static class AllActivityPage {
         static final String FIRST_POST_EDIT_BUTTON_XPATH ="//a[1 and @data-testid='pencil_icon_link']";
+
+        static final String YOUR_POSTS_BUTTON_XPATH = "//a[@title='Your Posts']";
+
+        static final String DELETE_BUTTON_XPATH = "//span[text()='Delete']";
+
+        static final String CONFIRM_DELETE_BUTTON_XPATH = "//button[text() = 'Delete Post']";
     }
 
 

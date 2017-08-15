@@ -7,8 +7,15 @@ public class main {
 
     public static void main(String[] args) {
         WebDriver driver = setUpDriver();
+        int i = 0;
+
         FacebookProxy facebook = new FacebookProxy(driver);
-        facebook.login().allActivityPage();
+        facebook.login();
+
+        while(i < 5) {
+            facebook.goToAllPostsPage().deleteTopPost();
+            i++;
+        }
     }
 
     private static WebDriver setUpDriver() {
