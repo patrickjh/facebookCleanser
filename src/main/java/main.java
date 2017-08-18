@@ -7,15 +7,17 @@ public class main {
 
     public static void main(String[] args) {
         WebDriver driver = setUpDriver();
-        int i = 0;
 
         FacebookProxy facebook = new FacebookProxy(driver);
         facebook.login();
 
-        while(i < 5) {
-            facebook.goToAllPostsPage().deleteTopPost();
-            i++;
-        }
+        //deleteAllPosts(facebook);
+
+        deleteAllComments(facebook);
+
+
+
+
     }
 
     private static WebDriver setUpDriver() {
@@ -24,5 +26,25 @@ public class main {
                         + File.separator + "Desktop" + File.separator + "geckodriver.exe" );
 
         return new FirefoxDriver();
+    }
+
+    private static void deleteAllComments(FacebookProxy facebook) {
+        int i=0;
+        while(true) {
+            facebook.goToAllCommentsPage().deleteTopComment();
+            i++;
+            System.out.println(Integer.toString(i) + "Comments Deleted");
+        }
+
+    }
+
+    private static void deleteAllPosts(FacebookProxy facebook) {
+        int i = 0;
+
+        while(true) {
+            facebook.goToAllPostsPage().deleteTopPost();
+            i++;
+            System.out.println(Integer.toString(i) + "Posts Deleted");
+        }
     }
 }

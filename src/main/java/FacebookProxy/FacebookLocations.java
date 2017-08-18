@@ -33,6 +33,8 @@ class FacebookLocations {
         static final String DELETE_BUTTON_XPATH = "//span[text()='Delete']";
 
         static final String CONFIRM_DELETE_BUTTON_XPATH = "//button[text() = 'Delete Post']";
+
+        static final String COMMENTS_BUTTON_XPATH = "//a[@title='Comments']";
     }
 
 

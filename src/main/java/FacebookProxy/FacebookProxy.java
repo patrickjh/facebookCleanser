@@ -34,23 +34,51 @@ public class FacebookProxy {
         return this;
     }
 
-    public FacebookProxy deleteTopPost() {
-        try {
-            this.findAndDeletePost();
-        }  catch (ElementNotFoundException e) {
-            this.scrollDown().findAndDeletePost();
-        }
+    public FacebookProxy goToAllCommentsPage() {
+        this.home().profilePage().allActivityPage().clickCommentsButton();
 
         return this;
     }
 
-    private void waitForFacebook() {
+    public FacebookProxy deleteTopPost() {
+        int i = 0;
+         do {
+            try {
+                this.findAndDeletePost();
+                return this;
+            } catch (Exception e) {
+                e.printStackTrace();
+                this.scrollDown().waitForFacebook();
+                i++;
+            }
+        } while (i < 15);
+        return this;
+    }
+
+    public FacebookProxy deleteTopComment() {
+        int i = 0;
+        do {
+            try {
+                this.findAndDeleteComment().waitForFacebook();
+                return this;
+            } catch (Exception e) {
+                e.printStackTrace();
+                this.scrollDown().waitForFacebook();
+                i++;
+            }
+        } while (i < 15);
+        return this;
+    }
+
+    private FacebookProxy waitForFacebook() {
         try {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
             e.printStackTrace();
             System.exit(5);
         }
+
+        return this;
     }
 
     private FacebookProxy home() {
@@ -76,6 +104,12 @@ public class FacebookProxy {
         return this;
     }
 
+    private FacebookProxy clickCommentsButton() {
+        driver.findElement(By.xpath(AllActivityPage.COMMENTS_BUTTON_XPATH)).click();
+
+        return this;
+    }
+
     private FacebookProxy clickFirstEditPostButton() {
         driver.findElement(By.xpath(AllActivityPage.FIRST_POST_EDIT_BUTTON_XPATH)).click();
 
@@ -83,7 +117,7 @@ public class FacebookProxy {
     }
 
     private FacebookProxy clickDeleteButton() {
-        driver.findElement(By.xpath(AllActivityPage.DELETE_BUTTON_XPATH)).click();
+            driver.findElement(By.xpath(AllActivityPage.DELETE_BUTTON_XPATH)).click();
 
         return this;
     }
@@ -96,18 +130,27 @@ public class FacebookProxy {
 
     private FacebookProxy scrollDown() {
         JavascriptExecutor jse = (JavascriptExecutor)driver;
-        jse.executeScript("scroll(0,250);");
+        jse.executeScript("scrollBy(0,250);");
+
+        return this;
+    }
+
+    private FacebookProxy findAndDeleteComment() {
+        this.clickFirstEditPostButton().clickDeleteButton();
 
         return this;
     }
 
     private FacebookProxy findAndDeletePost() {
-        this.clickFirstEditPostButton()
-                .clickDeleteButton();
+        this.clickFirstEditPostButton().clickDeleteButton();
 
         waitForFacebook();
-        this.clickConfirmDeleteButton();
 
+        try {
+            this.clickConfirmDeleteButton();
+        } catch (ElementNotInteractableException e) {
+            this.clickConfirmDeleteButton();
+        }
         return this;
     }
 }
