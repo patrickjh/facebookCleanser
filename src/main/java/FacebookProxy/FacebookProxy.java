@@ -1,6 +1,5 @@
 package FacebookProxy;
 
-import com.gargoylesoftware.htmlunit.ElementNotFoundException;
 import org.openqa.selenium.*;
 
 import java.util.concurrent.TimeUnit;
@@ -59,7 +58,7 @@ public class FacebookProxy {
         int i = 0;
         do {
             try {
-                this.findAndDeleteComment().waitForFacebook();
+                this.waitForFacebook().scrollDown().findAndDeleteComment();
                 return this;
             } catch (Exception e) {
                 e.printStackTrace();
