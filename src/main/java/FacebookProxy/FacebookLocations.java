@@ -37,5 +37,11 @@ class FacebookLocations {
         static final String COMMENTS_BUTTON_XPATH = "//a[@title='Comments']";
     }
 
+    static class AllCommentsPage {
+        static String commentsYearButtonXpath(String year) {
+            return"//li[@data-key='year_" + year + "']";
+        }
+    }
+
 
 }

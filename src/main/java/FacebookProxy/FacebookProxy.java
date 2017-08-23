@@ -58,20 +58,38 @@ public class FacebookProxy {
         int i = 0;
         do {
             try {
-                this.waitForFacebook().scrollDown().findAndDeleteComment();
+                this.findAndDeleteComment();
                 return this;
             } catch (Exception e) {
                 e.printStackTrace();
-                this.scrollDown().waitForFacebook();
+                this.shortWaitForFacebook().scrollDown();
                 i++;
             }
-        } while (i < 15);
+        } while (i < 25);
+        return this;
+    }
+
+    public FacebookProxy goToYear(String year) {
+        this.shortWaitForFacebook();
+        driver.findElement(By.xpath(AllCommentsPage.commentsYearButtonXpath(year))).click();
+
         return this;
     }
 
     private FacebookProxy waitForFacebook() {
         try {
             Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+            System.exit(5);
+        }
+
+        return this;
+    }
+
+    private FacebookProxy shortWaitForFacebook() {
+        try {
+            Thread.sleep(1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
             System.exit(5);
@@ -129,7 +147,14 @@ public class FacebookProxy {
 
     private FacebookProxy scrollDown() {
         JavascriptExecutor jse = (JavascriptExecutor)driver;
-        jse.executeScript("scrollBy(0,250);");
+        jse.executeScript("scrollBy(0,100);");
+
+        return this;
+    }
+
+    private FacebookProxy largeScrollDown() {
+        JavascriptExecutor jse = (JavascriptExecutor) driver;
+        jse.executeScript("scrollBy(0,750);");
 
         return this;
     }

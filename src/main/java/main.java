@@ -11,9 +11,9 @@ public class main {
         FacebookProxy facebook = new FacebookProxy(driver);
         facebook.login();
 
-        //deleteAllPosts(facebook);
+        deleteAllPosts(facebook);
 
-        deleteAllComments(facebook);
+        //deleteAllComments(facebook);
 
 
 
@@ -31,7 +31,7 @@ public class main {
     private static void deleteAllComments(FacebookProxy facebook) {
         int i=0;
         while(true) {
-            facebook.goToAllCommentsPage().deleteTopComment();
+            facebook.goToAllCommentsPage().goToYear("2008").deleteTopComment();
             i++;
             System.out.println(Integer.toString(i) + "Comments Deleted");
         }
@@ -42,7 +42,7 @@ public class main {
         int i = 0;
 
         while(true) {
-            facebook.goToAllPostsPage().deleteTopPost();
+            facebook.goToAllPostsPage().goToYear("2008").deleteTopPost();
             i++;
             System.out.println(Integer.toString(i) + "Posts Deleted");
         }
