@@ -70,7 +70,7 @@ public class FacebookProxy {
     }
 
     public FacebookProxy goToYear(String year) {
-        this.shortWaitForFacebook();
+        this.waitForFacebook();
         driver.findElement(By.xpath(AllCommentsPage.commentsYearButtonXpath(year))).click();
 
         return this;

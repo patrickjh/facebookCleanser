@@ -31,7 +31,7 @@ public class main {
     private static void deleteAllComments(FacebookProxy facebook) {
         int i=0;
         while(true) {
-            facebook.goToAllCommentsPage().goToYear("2008").deleteTopComment();
+            facebook.goToAllCommentsPage().goToYear("2009").deleteTopComment();
             i++;
             System.out.println(Integer.toString(i) + "Comments Deleted");
         }
@@ -42,7 +42,7 @@ public class main {
         int i = 0;
 
         while(true) {
-            facebook.goToAllPostsPage().goToYear("2008").deleteTopPost();
+            facebook.goToAllPostsPage().goToYear("2009").deleteTopPost();
             i++;
             System.out.println(Integer.toString(i) + "Posts Deleted");
         }

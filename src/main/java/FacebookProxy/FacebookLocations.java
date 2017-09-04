@@ -18,15 +18,15 @@ class FacebookLocations {
 
         static final String URL = "http://www.facebook.com";
 
-        static final String PROFILE_PAGE_BUTTON_XPATH = "//a[@data-testid='blue_bar_profile_link']";
+        static final String PROFILE_PAGE_BUTTON_XPATH = "//div[@data-click='profile_icon']";
     }
 
     static class ProfilePage {
-        static final String ALL_ACTIVITY_PAGE_BUTTON_XPATH = "//a[@data-testid='view_activity_cover_button']";
+        static final String ALL_ACTIVITY_PAGE_BUTTON_XPATH = "//a[text() ='View Activity Log']";
     }
 
     static class AllActivityPage {
-        static final String FIRST_POST_EDIT_BUTTON_XPATH ="//a[1 and @data-testid='pencil_icon_link']";
+        static final String FIRST_POST_EDIT_BUTTON_XPATH ="//a[1 and @data-tooltip-content='Allowed on timeline']";
 
         static final String YOUR_POSTS_BUTTON_XPATH = "//a[@title='Your Posts']";
 
